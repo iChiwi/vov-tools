@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voice of Valrise</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <script>
+        // Poll logs every 3 seconds
+        function fetchLogs() {
+            fetch("/logs")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("console").innerText = data.join("\n");
+                });
+        }
+        // Poll queue every 5 seconds
+        function fetchQueue() {
+            fetch("/queue")
+                .then(response => response.json())
+                .then(data => {
+                    let qHTML = "";
+                    data.forEach((song, index) => {
+                        qHTML += (index + 1) + ". " + song.name + " - " + song.artists[0].name + "\n";
+                    });
+                    document.getElementById("queue").innerText = qHTML;
+                });
+        }
+        // Start polling intervals
+        setInterval(fetchLogs, 3000);
+        setInterval(fetchQueue, 5000);
+    </script>
+</head>
+<body>
+    {% if not logged_in %}
+    <div class="center">
+        <h1>Voice of Valrise Login</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="client_id">Spotify Client ID</label><br>
+            <input type="text" id="client_id" name="client_id" required><br><br>
+            <label for="client_secret">Spotify Client Secret</label><br>
+            <input type="password" id="client_secret" name="client_secret" required><br><br>
+            <button type="submit">Login with Spotify</button>
+        </form>
+        <p class="note">
+            Note: Redirect URI must be <strong>http://localhost:8888/callback</strong>
+        </p>
+    </div>
+    {% else %}
+    <a href="{{ url_for('logout') }}" class="logout-button">
+        LOG OUT
+    </a>
+    <div class="center">
+        <h2>QUEUE</h2>
+        <pre id="queue" class="data-box"></pre>
+        <h2>CONSOLE</h2>
+        <pre id="console" class="data-box"></pre>
+    </div>
+    {% endif %}
+    <footer>
+        All Rights Reserved © 2025 — Made with <span class="heart">❤︎</span> by <b><a href="https://github.com/iChiwi">iChiwi</a></b>
+    </footer>
+</body>
+</html>
