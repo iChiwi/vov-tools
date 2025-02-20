@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Voice of Valrise
 
 Voice of Valrise is a web application that allows users to interact with Spotify to manage a song queue and process song requests. Built using Flask, this application provides a user-friendly interface for logging in with Spotify credentials and viewing the current song queue and console logs.
@@ -63,3 +64,7 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+=======
+# Example
+ An example for a GitHub repository to set up a local repository.
+>>>>>>> a69dc397f42b1e4cb93bf67526081341ff83d620

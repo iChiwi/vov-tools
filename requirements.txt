@@ -1,8 +1,0 @@
-Flask==2.0.3
-spotipy==2.19.0
-chardet==4.0.0
-google-auth==1.35.0
-google-auth-oauthlib==0.4.6
-requests==2.26.0
-threading==3.9.7
-json==2.0.9
