@@ -28,7 +28,7 @@ voice-of-valrise
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/voice-of-valrise.git
+   git clone https://github.com/iChiwi/vov-tools.git
    cd voice-of-valrise
    ```
 
