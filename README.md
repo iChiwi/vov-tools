@@ -49,7 +49,7 @@ voice-of-valrise
 
 1. Run the application:
    ```
-   python production/app.py
+   python app.py
    ```
 
 2. Open your web browser and navigate to `http://localhost:5000`.
